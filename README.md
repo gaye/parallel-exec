@@ -1,4 +1,4 @@
-# Threader
+# parallel-exec
 
 An experiment to speed up the execution of programs that run on a single machine
 by distributing tasks over threads.
