@@ -1,0 +1,12 @@
+{
+  "name": "parallel-exec",
+  "version": "0.0.1-alpha",
+  "author": "Gareth Aye <gaye@mozilla.com>",
+  "dependencies": {
+    "async": "0.2.9",
+    "debug": "0.7.4"
+  },
+  "scripts": {
+    "test": "DEBUG=Parallel node test-integration.js"
+  }
+}
