@@ -3,10 +3,11 @@
   "version": "0.0.1-alpha",
   "author": "Gareth Aye <gaye@mozilla.com>",
   "dependencies": {
-    "async": "0.2.9",
+    "async": "0.2.10",
+    "commander": "2.1.0",
     "debug": "0.7.4"
   },
-  "scripts": {
-    "test": "DEBUG=Parallel node test-integration.js"
+  "bin": {
+    "test-integration": "bin/test-integration.js"
   }
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var Parallel = require('./lib/parallel'),
+var Parallel = require('../lib/parallel'),
     exec = require('child_process').exec;
 
 /**
@@ -17,17 +17,23 @@ var TEST_PATH = '*test/marionette/*_test.js';
 function main() {
   exec('find . -path ' + TEST_PATH, { cwd: GAIA_PATH }, function(err, stdout) {
     var files = stdout.split('\n');
-    var parallel = new Parallel('./bin/gaia-marionette', {
-      cwd: GAIA_PATH 
-    }, files);
+    var parallel = new Parallel({
+      command: 'TEST_FILES="%s" ./bin/gaia-marionette',
+      keys: files,
+      options: {
+        cwd: GAIA_PATH
+      }
+    });
 
     parallel.exec(function(err, results) {
-      console.error(err);
+      if (err) {
+        throw err;
+      }
 
       results.forEach(function(result) {
         console.log(result.stdout);
         console.error(result.stderr);
-      })
+      });
     });
   });
 }
